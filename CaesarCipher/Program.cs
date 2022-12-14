@@ -56,11 +56,16 @@ namespace CaesarCipher
 
             foreach (var letter in textLetters)
             {
-                var key = ((letter - 64) + offset) % 26;
+                currentChar = letter;
 
-                key = key == 0 ? 26 : key;
+                if (letter >= 65 && letter <= 90)
+                {
+                    var key = ((letter - 64) + offset) % 26;
 
-                var success = _alpahbetDict.TryGetValue(key, out currentChar);
+                    key = key == 0 ? 26 : key;
+
+                    var success = _alpahbetDict.TryGetValue(key, out currentChar);
+                }
 
                 userResponseText.Append(currentChar);
             }

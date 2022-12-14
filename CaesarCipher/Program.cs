@@ -64,6 +64,11 @@ namespace CaesarCipher
 
                     key = key == 0 ? 26 : key;
 
+                    if (key < 0)
+                    {
+                        key = _alpahbetDict.Count + key;
+                    }
+
                     var success = _alpahbetDict.TryGetValue(key, out currentChar);
                 }
 
